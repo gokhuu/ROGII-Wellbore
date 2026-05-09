@@ -1,0 +1,53 @@
+name: xgb_baseline
+description: |
+  First XGBoost model — residual target, 19 features.
+  Reproduces notebook 05's pooled OOF RMSE = 15.306.
+
+target:
+  source_col: target_tvt
+  # If residual_anchor_col is set, target = source_col - anchor (model predicts residual).
+  # Final test predictions add the anchor back to recover absolute TVT.
+  residual_anchor_col: anchor_tvt
+
+features:
+  - md
+  - x
+  - y
+  - z
+  - gr
+  - gr_local_mean_50
+  - gr_local_std_50
+  - anchor_tvt
+  - anchor_z
+  - anchor_md
+  - anchor_gr
+  - smooth_anchor_tvt_50
+  - slope_tvt_md_50
+  - d_md_from_anchor
+  - d_z_from_anchor
+  - d_gr_from_anchor
+  - gr_match_tvt
+  - gr_match_sim
+  - gr_match_delta_anchor
+
+cv:
+  n_folds: 5
+  group_col: well
+
+model:
+  class: xgboost
+  params:
+    max_depth: 6
+    learning_rate: 0.05
+    n_estimators: 2000
+    early_stopping_rounds: 50
+    eval_metric: rmse
+    tree_method: hist
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_weight: 10
+    reg_lambda: 1.0
+    n_jobs: -1
+    random_state: 42
+  fit_params:
+    verbose: 200

@@ -1,0 +1,66 @@
+{
+  "experiment_name": "xgb_baseline",
+  "model_class": "xgboost",
+  "n_features": 19,
+  "features": [
+    "md",
+    "x",
+    "y",
+    "z",
+    "gr",
+    "gr_local_mean_50",
+    "gr_local_std_50",
+    "anchor_tvt",
+    "anchor_z",
+    "anchor_md",
+    "anchor_gr",
+    "smooth_anchor_tvt_50",
+    "slope_tvt_md_50",
+    "d_md_from_anchor",
+    "d_z_from_anchor",
+    "d_gr_from_anchor",
+    "gr_match_tvt",
+    "gr_match_sim",
+    "gr_match_delta_anchor"
+  ],
+  "target_col": "_target",
+  "n_folds": 5,
+  "pooled_oof_rmse": 15.305990513900968,
+  "per_fold": [
+    {
+      "fold": 0,
+      "rmse": 14.445793151855469,
+      "best_iteration": 66,
+      "n_train": 3026251,
+      "n_val": 757738
+    },
+    {
+      "fold": 1,
+      "rmse": 14.90852165222168,
+      "best_iteration": 21,
+      "n_train": 3027339,
+      "n_val": 756650
+    },
+    {
+      "fold": 2,
+      "rmse": 14.161784172058105,
+      "best_iteration": 33,
+      "n_train": 3027734,
+      "n_val": 756255
+    },
+    {
+      "fold": 3,
+      "rmse": 15.767277717590332,
+      "best_iteration": 14,
+      "n_train": 3026888,
+      "n_val": 757101
+    },
+    {
+      "fold": 4,
+      "rmse": 17.067506790161133,
+      "best_iteration": 17,
+      "n_train": 3027744,
+      "n_val": 756245
+    }
+  ]
+}
