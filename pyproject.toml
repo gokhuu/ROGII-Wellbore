@@ -1,0 +1,79 @@
+[project]
+name = "rogii-wellbore-geology"
+version = "0.0.1"
+description = "Kaggle ROGII Wellbore Geology Prediction — TVT regression from gamma-ray logs."
+requires-python = ">=3.11,<3.12"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "you" }]
+
+dependencies = [
+  "numpy>=1.26,<2.0",
+  "pandas>=2.2",
+  "pyarrow>=15.0",
+  "scipy>=1.12",
+  "scikit-learn>=1.4",
+  "lightgbm>=4.3",
+  "torch>=2.2",
+  "mlflow>=2.12",
+  "typer>=0.12",
+  "loguru>=0.7",
+  "duckdb>=0.10",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.4",
+  "mypy>=1.10",
+  "pytest>=8.2",
+  "pytest-cov>=5.0",
+  "pre-commit>=3.7",
+  "nbstripout>=0.7",
+  "jupyterlab>=4.2",
+  "ipykernel>=6.29",
+]
+viz = [
+  "matplotlib>=3.8",
+  "seaborn>=0.13",
+  "plotly>=5.20",
+]
+serving = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.29",
+  "pydantic>=2.7",
+]
+
+[project.scripts]
+rogii = "rogii_wellbore.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rogii_wellbore"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["E501"]  # ruff-format handles line length
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_unused_ignores = true
+no_implicit_optional = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+filterwarnings = ["ignore::DeprecationWarning"]
