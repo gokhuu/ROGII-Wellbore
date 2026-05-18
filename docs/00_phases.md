@@ -2,7 +2,7 @@
 
 | # | Phase                                 | Status | OOF RMSE | LB RMSE | Notes |
 |---|---------------------------------------|--------|----------|---------|-------|
-| 0 | Scaffolding & env                     | ☐      | —        | —       |       |
+| 0 | Scaffolding & env                     | ☑      | —        | —       |       |
 | 1 | EDA                                   | ☐      | —        | —       |       |
 | 2 | Naive baselines (constant + LGBM)     | ☐      |          |         |       |
 | 3 | Domain baseline (GR slide-and-match)  | ☐      |          |         |       |

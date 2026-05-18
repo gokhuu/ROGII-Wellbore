@@ -1,0 +1,14 @@
+artifact_uri: /home/gokhuu/portfolio/ROGII-Wellbore/mlruns/516721951549977114/9767a0f1364646c9bbe34202275c70e2/artifacts
+end_time: 1779066907538
+entry_point_name: ''
+experiment_id: '516721951549977114'
+lifecycle_stage: active
+run_id: 9767a0f1364646c9bbe34202275c70e2
+run_name: hello
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779066907530
+status: 3
+tags: []
+user_id: gokhuu
