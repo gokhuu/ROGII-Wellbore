@@ -1,38 +1,38 @@
 .PHONY: setup lint format test eda mlflow-ui train-constant train-lgbm train-seq submit clean
 
 setup:
-	uv sync --all-extras
-	uv run pre-commit install
+	conda env update -f environment.yml --prune
+	pre-commit install
 
 lint:
-	uv run ruff check src tests
-	uv run ruff format --check src tests
-	uv run mypy
+	ruff check src tests
+	ruff format --check src tests
+	mypy
 
 format:
-	uv run ruff format src tests
-	uv run ruff check --fix src tests
+	ruff format src tests
+	ruff check --fix src tests
 
 test:
-	uv run pytest
+	pytest
 
 eda:
-	uv run jupyter lab
+	jupyter lab
 
 mlflow-ui:
-	uv run mlflow ui --backend-store-uri ./mlruns --port 5000
+	mlflow ui --backend-store-uri ./mlruns --port 5000
 
 train-constant:
-	uv run rogii train-constant
+	rogii train-constant
 
 train-lgbm:
-	uv run rogii train-lgbm
+	rogii train-lgbm
 
 train-seq:
-	uv run rogii train-seq
+	rogii train-seq
 
 submit:
-	uv run rogii submit
+	rogii submit
 
 clean:
 	rm -rf .pytest_cache .mypy_cache .ruff_cache **/__pycache__

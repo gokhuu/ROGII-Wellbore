@@ -7,7 +7,7 @@ typewell reference.
 ## Quickstart
 
 ```bash
-make setup          # uv sync + install pre-commit hooks
+make setup          # conda env update + install pre-commit hooks
 make test           # run pytest
 make lint           # ruff + mypy
 make mlflow-ui      # MLflow UI at http://localhost:5000

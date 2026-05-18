@@ -9,28 +9,28 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v3
+      - name: Set up micromamba
+        uses: mamba-org/setup-micromamba@v1
         with:
-          enable-cache: true
-
-      - name: Set up Python
-        run: uv python install 3.11
-
-      - name: Install dependencies
-        run: uv sync --all-extras
+          environment-file: environment.yml
+          environment-name: rogii
+          cache-environment: true
+          cache-downloads: true
 
       - name: Ruff lint
-        run: uv run ruff check src tests
+        run: ruff check src tests
 
       - name: Ruff format check
-        run: uv run ruff format --check src tests
+        run: ruff format --check src tests
 
       - name: Mypy
-        run: uv run mypy
+        run: mypy
 
       - name: Pytest
-        run: uv run pytest
+        run: pytest
