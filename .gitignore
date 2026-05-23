@@ -2,4 +2,4 @@ data/AI_wellbore_geology_prediction_task_en.pptx
 /archive/prior_attempt
 mlruns/
 *.parquet
-*.cpy
+*.pyc
