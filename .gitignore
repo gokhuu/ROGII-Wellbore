@@ -4,3 +4,7 @@ mlruns/
 *.parquet
 *.pyc
 *.pkl
+src/rogii_wellbore/__pycache__/features.cpython-311.pyc
+src/rogii_wellbore/models/__pycache__/constant.cpython-311.pyc
+src/rogii_wellbore/models/__pycache__/lgbm.cpython-311.pyc
+tests/__pycache__/test_features.cpython-311-pytest-9.0.3.pyc

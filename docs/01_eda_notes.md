@@ -119,7 +119,7 @@ Across all wells, typewell span exceeds lateral span by a healthy margin (most p
 - The same eval-zone tail mask appears in test as in train (3836 NaN rows in `000d7d20` test, identical to train). Public-LB evaluation is the masked tail of these 3 wells; ground truth held server-side.
 
 ### Geographic structure
-- All 773 wells lie within a single field complex, ~33 mi × 25 mi (X: 2.86M to 3.04M, Y: 1.01M to 1.14M; units = ft).
+- All 773 wells lie within a single field complex, ~33mi by 25mi (X: 2.86M to 3.04M, Y: 1.01M to 1.14M; units = ft).
 - Wells cluster in **linear streaks** — these are pads/leases (multiple laterals drilled from a common surface location, branching out radially).
 - Two visually distinct main concentrations: a SW cluster around (X≈2.88M, Y≈1.02M) and a NE cluster around (X≈3.00M, Y≈1.10M).
 - All 3 test wells sit in the densest part of the NE cluster.
