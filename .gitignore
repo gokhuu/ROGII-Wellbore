@@ -3,3 +3,4 @@ data/AI_wellbore_geology_prediction_task_en.pptx
 mlruns/
 *.parquet
 *.pyc
+*.pkl
