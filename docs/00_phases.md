@@ -3,9 +3,9 @@
 | # | Phase                                 | Status | OOF RMSE | LB RMSE | Notes |
 |---|---------------------------------------|--------|----------|---------|-------|
 | 0 | Scaffolding & env                     | ☑      | —        | —       |       |
-| 1 | EDA                                   | ☐      | —        | —       |       |
-| 2 | Naive baselines (constant + LGBM)     | ☐      |          |         |       |
-| 3 | Domain baseline (GR slide-and-match)  | ☐      |          |         |       |
+| 1 | EDA                                   | ☑      | —        | —       |       |
+| 2 | Naive baselines (constant + LGBM)     | ☑      |          |         |       |
+| 3 | Domain baseline (GR slide-and-match)  | ☑      |          |         |       |
 | 4 | Sequence model                        | ☐      |          |         |       |
 | 5 | Iteration                             | ☐      |          |         |       |
 | 6 | Ensembling + offline Kaggle notebook  | ☐      |          |         |       |

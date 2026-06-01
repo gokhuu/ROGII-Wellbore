@@ -110,7 +110,7 @@ def predict_lgbm(model: lgb.Booster, well: pd.DataFrame) -> np.ndarray:
     """
     anchor_idx = pick_inference_anchor(well)
     feats = build_features_for_well(well, anchor_idx)
-    residual_pred = model.predict(feats[FEATURES])
+    residual_pred = np.asarray(model.predict(feats[FEATURES]), dtype=np.float64)
     anchor_tvt = float(feats["anchor_tvt_value"].iloc[0])
     pred_tvt = anchor_tvt + residual_pred
     tvt_in = well["TVT_input"].to_numpy(dtype=float)

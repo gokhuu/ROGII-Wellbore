@@ -31,17 +31,22 @@ FEATURES_V2: list[str] = [
 
 
 def default_params_v2() -> dict[str, Any]:
-    """LGBM params matching v1 defaults — change is feature set only."""
+    """LGBM params matching v1 defaults exactly — the ONLY intended difference
+    between v1 and v2 is the feature set. v1 used regression_l2 + lambda_l2=1.0
+    + bagging_freq=1; v2 previously diverged (no lambda_l2, bagging_freq=5),
+    which confounded any v1-vs-v2 comparison. Aligned here."""
     return {
-        "objective": "regression",
+        "objective": "regression_l2",
         "metric": "rmse",
         "learning_rate": 0.05,
         "num_leaves": 63,
         "min_data_in_leaf": 100,
         "feature_fraction": 0.9,
         "bagging_fraction": 0.9,
-        "bagging_freq": 5,
+        "bagging_freq": 1,
+        "lambda_l2": 1.0,
         "verbose": -1,
+        "num_threads": -1,
         "seed": 42,
     }
 
@@ -78,7 +83,6 @@ def assemble_training_matrix_v2(
         known = ~np.isnan(tvt_input)
         if not known.any():
             continue
-        last_known = int(np.flatnonzero(known)[-1])
         for frac in anchor_fracs:
             anchor_idx = pick_training_anchor(well, frac=frac)
             anchor_tvt = float(tvt_input[anchor_idx])
@@ -89,9 +93,15 @@ def assemble_training_matrix_v2(
                 compute_matcher_sim=compute_matcher_sim,
                 well_constants=well_consts,
             )
-            # Use rows AFTER the synthetic anchor, still inside the known segment.
+            # Use ALL rows AFTER the synthetic anchor with finite true TVT.
+            # Mirrors v1's _assemble_training_matrix: training rows extend past
+            # last_known into the (training-data-populated) tail, so the model
+            # sees the large-dmd forward-extrapolation regime it must predict at
+            # inference. The old `& (row_idx <= last_known)` cap starved v2 of
+            # every extrapolation row, producing val_rmse ~3 but eval RMSE ~15.
+            # Finite-target gating below (np.isfinite(y)) drops NaN-TVT rows.
             row_idx = feats["row_idx"].to_numpy()
-            in_window = (row_idx > anchor_idx) & (row_idx <= last_known)
+            in_window = row_idx > anchor_idx
             if not in_window.any():
                 continue
             sub = feats.loc[in_window, FEATURES_V2].to_numpy()
@@ -157,4 +167,5 @@ def predict_lgbm_v2(
         well, anchor_idx, typewell=typewell, compute_matcher_sim=compute_matcher_sim
     )
     X = feats[FEATURES_V2].to_numpy()
-    return model.predict(X, num_iteration=model.best_iteration)
+    preds = model.predict(X, num_iteration=model.best_iteration)
+    return np.asarray(preds, dtype=np.float64)

@@ -74,3 +74,44 @@ def predict_linear_extrap(well: pd.DataFrame, k: int = 20) -> np.ndarray:
     eval_idx = np.isnan(out)
     out[eval_idx] = slope * md[eval_idx] + intercept
     return out
+
+
+def predict_causal_affine(well: pd.DataFrame, lam: float = 1.0) -> np.ndarray:
+    """Causal per-well affine extrapolation, damped toward carry-forward by `lam`.
+
+    Fit a line TVT_input ~ MD over the ENTIRE known zone (least squares), then
+    extrapolate from the carry-forward anchor with the slope scaled by `lam`:
+
+        pred[eval] = anchor_tvt + lam * slope * (MD[eval] - MD[anchor])
+
+    Properties:
+      - lam == 0.0  -> identical to predict_carry_forward (slope term vanishes).
+      - lam == 1.0  -> full causal fitted slope, pivoted at the anchor.
+      - The fit uses ONLY known rows; eval rows are never seen. No leak.
+
+    Full known zone (not last-K) is deliberate: Phase 3 finding #1 showed a
+    last-K local slope amplifies error (~107 RMSE). A whole-known-zone slope is
+    the stable version; `lam` then controls how much of it to trust.
+
+    Degenerate wells (<2 known rows) fall back to carry-forward on that well.
+    """
+    tvt_in = well["TVT_input"].to_numpy(dtype=float)
+    md = well["MD"].to_numpy(dtype=float)
+    anchor = _anchor_idx(well["TVT_input"])
+
+    out = tvt_in.copy()
+    eval_idx = np.isnan(out)
+    anchor_tvt = tvt_in[anchor]
+    md_anchor = md[anchor]
+
+    known_mask = ~np.isnan(tvt_in)
+    if int(known_mask.sum()) < 2:
+        out[eval_idx] = anchor_tvt
+        return out
+
+    md_known = md[known_mask]
+    tvt_known = tvt_in[known_mask]
+    slope, _intercept = np.polyfit(md_known, tvt_known, deg=1)
+
+    out[eval_idx] = anchor_tvt + lam * slope * (md[eval_idx] - md_anchor)
+    return out

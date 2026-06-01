@@ -68,7 +68,7 @@ def run_oof_lgbm_v2(
     Pooled RMSE is over all eval rows of all val wells, mirroring the competition
     metric.
     """
-    well_ids = sorted(wells.keys())
+    well_ids = np.array(sorted(wells.keys()), dtype=object)
     p = params if params is not None else default_params_v2()
 
     fold_meta: list[dict] = []
