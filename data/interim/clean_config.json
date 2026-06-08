@@ -71,7 +71,7 @@
     "rationale": "Template matching requires both curves on one scale. Per-well z-score fit independently per source removes mean offset and scale differences so lateral and typewell GR are directly comparable."
   },
   "gr_alignment": {
-    "corr_lag0_median": 0.8439642595106818,
+    "corr_lag0_median": 0.8438619833971307,
     "corr_lag0_p05": 0.6650227121081682,
     "best_lag_abs_median_ft": 0.0,
     "weak_match_wells": [
@@ -140,8 +140,38 @@
     "alignment_table": "../data/interim/gr_alignment.parquet"
   },
   "geology": {
-    "n_categories": 43,
-    "categories": [
+    "n_categories_raw": 43,
+    "n_categories_canonical": 13,
+    "canonical_set": [
+      "ANCC",
+      "ASTNL",
+      "ASTNU",
+      "BUDA",
+      "EGFDL",
+      "EGFDU",
+      "LBHL",
+      "LTGT",
+      "LTHL",
+      "MNSS",
+      "OLMOS",
+      "UPSN"
+    ],
+    "canonical_categories_present": [
+      "ANCC",
+      "ASTNL",
+      "ASTNU",
+      "BUDA",
+      "EGFDL",
+      "EGFDU",
+      "LBHL",
+      "LTGT",
+      "LTHL",
+      "MNSS",
+      "OLMOS",
+      "OTHER",
+      "UPSN"
+    ],
+    "raw_categories": [
       "AC_UEF_BHL",
       "AC_UEF_THL",
       "AC_UEF_TRGT",
@@ -186,9 +216,10 @@
       "UTGT",
       "UTHL"
     ],
+    "other_bucket_fraction_of_labeled": 0.0078,
     "nan_fraction": 0.3340516705008471,
     "role": "auxiliary_supervision_typewell_only",
-    "note": "Category names overlap the horizontal boundary columns; usable as an auxiliary formation-classification target and to validate boundaries."
+    "note": "Raw Geology has ~43 inconsistent labels; use Geology_canon (12 units + OTHER, ~99% coverage). Canonical names overlap the horizontal boundary columns; usable as an auxiliary formation-classification target and to validate boundaries. Do NOT model the raw labels."
   },
   "trajectory": {
     "teleport_step_threshold": 5.0,
