@@ -1,0 +1,34 @@
+{
+  "pred_components": [
+    "pf_spread2",
+    "pf_seedens",
+    "pf_base",
+    "pf_N300",
+    "pf_spread8",
+    "beam_cons"
+  ],
+  "nnls_mean_weights": {
+    "pf_spread2": 0.1953856578463034,
+    "pf_seedens": 0.35302779376804627,
+    "pf_base": 0.0684362871057106,
+    "pf_N300": 0.11383525991640028,
+    "pf_spread8": 0.09714920642133487,
+    "beam_cons": 0.0,
+    "hold": 0.17216579494220458
+  },
+  "winner_stage": "uniform_blend",
+  "xh_cohort_rule": {
+    "feature": "z_span",
+    "threshold": 679.0499999999988
+  },
+  "xh_best_config": "xh_spread8_rw90",
+  "residual_alphas_tried": [
+    0.0,
+    0.3,
+    0.5,
+    0.7,
+    1.0
+  ],
+  "n_folds": 5,
+  "mask_frac_assumed": 0.73
+}
