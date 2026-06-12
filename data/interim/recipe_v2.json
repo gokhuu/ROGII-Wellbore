@@ -1,0 +1,79 @@
+{
+  "engine": "run_pf2",
+  "configs": {
+    "v2_base": {},
+    "v2_dz": {
+      "dz_couple": true
+    },
+    "v2_dz_g3s15": {
+      "dz_couple": true,
+      "gr_wt": 0.3,
+      "sm_win": 15
+    },
+    "v2_dz_g3s25": {
+      "dz_couple": true,
+      "gr_wt": 0.3,
+      "sm_win": 25
+    },
+    "v2_dz_g15s15": {
+      "dz_couple": true,
+      "gr_wt": 0.15,
+      "sm_win": 15
+    },
+    "v2_spread2_dz": {
+      "dz_couple": true,
+      "spread": 2.0
+    },
+    "v2_spread8_dz": {
+      "dz_couple": true,
+      "spread": 8.0
+    },
+    "v2_N300_dz": {
+      "dz_couple": true,
+      "N": 300
+    }
+  },
+  "seed_ensemble_of": "v2_dz_g3s15",
+  "seeds": [
+    42,
+    7,
+    2024,
+    99,
+    1234
+  ],
+  "blend_components": [
+    "v2_base",
+    "v2_dz",
+    "v2_dz_g3s15",
+    "v2_dz_g3s25",
+    "v2_dz_g15s15",
+    "v2_spread2_dz",
+    "v2_spread8_dz",
+    "v2_N300_dz",
+    "seedens_best",
+    "beam_cons",
+    "hold"
+  ],
+  "nnls_mean_weights": {
+    "v2_base": 0.4584086131412672,
+    "v2_dz": 0.003105000316756946,
+    "v2_dz_g3s15": 0.0,
+    "v2_dz_g3s25": 0.0,
+    "v2_dz_g15s15": 0.021736382503256112,
+    "v2_spread2_dz": 0.281692268862641,
+    "v2_spread8_dz": 0.0406107757508508,
+    "v2_N300_dz": 0.0,
+    "seedens_best": 0.0,
+    "beam_cons": 0.0023372796882105405,
+    "hold": 0.19210967973701748
+  },
+  "winner_flat073": {
+    "uniform_v2": 14.657803438535442,
+    "nnls_v2_oof": 13.381176419807339
+  },
+  "mask_realism_subset_means": {
+    "floor": 12.780956320541872,
+    "best_single": 11.303081428294877,
+    "mini_blend": 12.440455265296015
+  }
+}
