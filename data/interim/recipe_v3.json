@@ -1,0 +1,218 @@
+{
+  "pf_configs": {
+    "a_base": {},
+    "a_sp2": {
+      "spread": 2.0
+    },
+    "a_sp3": {
+      "spread": 3.0
+    },
+    "a_mom997": {
+      "MOM": 0.997
+    },
+    "a_mom999": {
+      "MOM": 0.999
+    },
+    "a_vn004": {
+      "VN": 0.004
+    },
+    "a_rp005": {
+      "RP": 0.05
+    },
+    "a_rp02": {
+      "RP": 0.2
+    },
+    "a_resamp07": {
+      "RESAMP": 0.7
+    },
+    "a_sp2_mom999": {
+      "spread": 2.0,
+      "MOM": 0.999
+    },
+    "a_sp2_vn004": {
+      "spread": 2.0,
+      "VN": 0.004
+    },
+    "a_grboth_15_3": {
+      "gr_wt": 0.3,
+      "lat_sm": 15,
+      "tw_sm": 3
+    },
+    "a_grboth_25_5": {
+      "gr_wt": 0.3,
+      "lat_sm": 25,
+      "tw_sm": 5
+    }
+  },
+  "beam_configs": {
+    "bm_cons": {
+      "BS": 10,
+      "mc": 20.0,
+      "es": 144.0,
+      "smooth": 2
+    },
+    "bm_loose": {
+      "BS": 10,
+      "mc": 8.0,
+      "es": 64.0,
+      "smooth": 2
+    },
+    "bm_vcons": {
+      "BS": 8,
+      "mc": 35.0,
+      "es": 220.0,
+      "smooth": 1
+    },
+    "bm_mid": {
+      "BS": 10,
+      "mc": 12.0,
+      "es": 100.0,
+      "smooth": 2
+    },
+    "bm_wide": {
+      "BS": 12,
+      "mc": 20.0,
+      "es": 144.0,
+      "smooth": 3
+    },
+    "bm_tight": {
+      "BS": 10,
+      "mc": 28.0,
+      "es": 180.0,
+      "smooth": 2
+    },
+    "bm_sharp": {
+      "BS": 8,
+      "mc": 16.0,
+      "es": 144.0,
+      "smooth": 1
+    },
+    "bm_soft": {
+      "BS": 10,
+      "mc": 20.0,
+      "es": 80.0,
+      "smooth": 2
+    }
+  },
+  "seed_ens": {
+    "ens_base": "a_base",
+    "ens_sp2": "a_sp2"
+  },
+  "seeds": [
+    42,
+    7,
+    2024,
+    99,
+    1234
+  ],
+  "candidate_pool": [
+    "ens_sp2",
+    "ens_base",
+    "a_sp2",
+    "a_sp2_mom999",
+    "a_rp02",
+    "a_base",
+    "a_resamp07",
+    "a_sp3",
+    "a_sp2_vn004",
+    "a_mom999",
+    "hold"
+  ],
+  "per_fold_subsets": [
+    [
+      "ens_sp2",
+      "a_sp2",
+      "a_rp02",
+      "a_base",
+      "a_resamp07",
+      "a_sp2_vn004"
+    ],
+    [
+      "ens_sp2",
+      "a_sp2",
+      "a_sp2_mom999",
+      "a_rp02",
+      "a_base",
+      "a_resamp07",
+      "a_sp2_vn004"
+    ],
+    [
+      "ens_sp2",
+      "a_sp2",
+      "a_sp2_mom999",
+      "a_resamp07",
+      "a_sp2_vn004"
+    ],
+    [
+      "ens_sp2",
+      "a_sp2",
+      "a_base",
+      "a_resamp07",
+      "a_sp2_vn004"
+    ],
+    [
+      "ens_sp2",
+      "a_sp2_mom999",
+      "a_rp02",
+      "a_base",
+      "a_resamp07",
+      "a_sp2_vn004"
+    ]
+  ],
+  "nnls_mean_weights": {
+    "ens_sp2": 0.22860306127605523,
+    "ens_base": 0.015492565992820149,
+    "a_sp2": 0.09634516384619392,
+    "a_sp2_mom999": 0.06923072236412087,
+    "a_rp02": 0.06993520768610383,
+    "a_base": 0.1382518013934478,
+    "a_resamp07": 0.13446680467000016,
+    "a_sp3": 0.0033017070832177414,
+    "a_sp2_vn004": 0.2335353516468246,
+    "a_mom999": 0.005999704886209831,
+    "hold": 0.004837909155005802
+  },
+  "postproc_oof": {
+    "hold_w": {
+      "pooled": 12.789844244637422,
+      "fold_picks": [
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.0",
+        "0.05"
+      ]
+    },
+    "anchor": {
+      "pooled": 12.756235836631399,
+      "fold_picks": [
+        "200",
+        "800",
+        "3200",
+        "800",
+        "800"
+      ]
+    },
+    "med_win": {
+      "pooled": 12.740022575885618,
+      "fold_picks": [
+        "101",
+        "101",
+        "101",
+        "101",
+        "101"
+      ]
+    },
+    "slew": {
+      "pooled": 12.755817023758526,
+      "fold_picks": [
+        "4.0",
+        "4.0",
+        "0",
+        "4.0",
+        "2.0"
+      ]
+    }
+  },
+  "well_sample": 250
+}

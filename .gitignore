@@ -12,3 +12,5 @@ src/rogii_wellbore/__pycache__/features.cpython-311.pyc
 data/interim/clean
 /data/interim/pf_preds
 /data/interim/pf_preds_v2
+/data/interim/pf_preds_v3
+data/interim/lab_preds
