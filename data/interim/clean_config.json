@@ -71,8 +71,8 @@
     "rationale": "Template matching requires both curves on one scale. Per-well z-score fit independently per source removes mean offset and scale differences so lateral and typewell GR are directly comparable."
   },
   "gr_alignment": {
-    "corr_lag0_median": 0.8438595576899373,
-    "corr_lag0_p05": 0.6647947552625142,
+    "corr_lag0_median": 0.843859557689937,
+    "corr_lag0_p05": 0.664794755262514,
     "best_lag_abs_median_ft": 0.0,
     "weak_match_wells": [
       "197f8a5a",
@@ -137,7 +137,7 @@
       "fbd68d27",
       "ffefef30"
     ],
-    "alignment_table": "..\\data\\interim\\gr_alignment.csv"
+    "alignment_table": "../data/interim/gr_alignment.csv"
   },
   "geology": {
     "n_categories_raw": 43,
