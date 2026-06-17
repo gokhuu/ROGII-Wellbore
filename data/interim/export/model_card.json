@@ -141,10 +141,10 @@
   },
   "mask_mode_cv": "flat",
   "cv": {
-    "wells": 773,
-    "pooled": 12.764229195897721,
-    "per_well": 10.334848544040618,
-    "floor_pooled": 16.3712753605386
+    "wells": 250,
+    "pooled": 12.52735157949637,
+    "per_well": 9.96884102909213,
+    "floor_pooled": 18.00915132155867
   },
   "inference_contract": "known zone = TVT_input.notna(); predictions for NaN rows"
 }

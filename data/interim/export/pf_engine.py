@@ -1,9 +1,7 @@
 # Standalone PF engine exported by 10_finetune. Vendored by submission.ipynb.
 import json
-
 import numpy as np
 import pandas as pd
-
 
 def run_pf(
     twt,
@@ -90,9 +88,7 @@ def run_pf(
     return out
 
 
-MODEL = json.loads(
-    """{"name": "v4", "engine": "pf_v1_superset", "configs": {"sp2": {"N": 500, "spread": 2.0, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "base": {"N": 500, "spread": 4.5, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "sp2_vn004": {"N": 500, "spread": 2.0, "MOM": 0.998, "VN": 0.004, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "resamp07": {"N": 500, "spread": 4.5, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.7, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "rp02": {"N": 500, "spread": 4.5, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.2, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "sp2_mom999": {"N": 500, "spread": 2.0, "MOM": 0.999, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}}, "seeds": [42, 7, 2024, 99, 1234], "combiner": "uniform", "trimmed_q": 0.2, "include_hold": false, "postproc": {"med_win": 0, "anchor_tau": 0, "slew_mult": 0, "hold_w": 0.0}, "mask_mode_cv": "flat", "cv": {"wells": 773, "pooled": 12.764229195897721, "per_well": 10.334848544040618, "floor_pooled": 16.3712753605386}, "inference_contract": "known zone = TVT_input.notna(); predictions for NaN rows"}"""
-)
+MODEL = json.loads('''{"name": "v4", "engine": "pf_v1_superset", "configs": {"sp2": {"N": 500, "spread": 2.0, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "base": {"N": 500, "spread": 4.5, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "sp2_vn004": {"N": 500, "spread": 2.0, "MOM": 0.998, "VN": 0.004, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "resamp07": {"N": 500, "spread": 4.5, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.7, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "rp02": {"N": 500, "spread": 4.5, "MOM": 0.998, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.2, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}, "sp2_mom999": {"N": 500, "spread": 2.0, "MOM": 0.999, "VN": 0.002, "PN": 0.005, "rate_win": 30, "gs_min": 10.0, "gs_max": 60.0, "RESAMP": 0.5, "RP": 0.1, "RR": 0.001, "init_rate_noise": 0.01, "lik_cap": 600.0, "min_dm": 1.0, "bound_margin": 100.0, "estimator": "mean", "trim_q": 0.1, "rate_est": "median"}}, "seeds": [42, 7, 2024, 99, 1234], "combiner": "uniform", "trimmed_q": 0.2, "include_hold": false, "postproc": {"med_win": 0, "anchor_tau": 0, "slew_mult": 0, "hold_w": 0.0}, "mask_mode_cv": "flat", "cv": {"wells": 250, "pooled": 12.52735157949637, "per_well": 9.96884102909213, "floor_pooled": 18.00915132155867}, "inference_contract": "known zone = TVT_input.notna(); predictions for NaN rows"}''')
 
 
 def predict_well(hz, tw):
@@ -103,20 +99,20 @@ def predict_well(hz, tw):
     tw_s = tw.sort_values("TVT")
     twt = tw_s["TVT"].values.astype(float)
     twg = tw_s["GR"].ffill().bfill().values.astype(float)
-    Z = hz["Z"].values.astype(float)
-    MD = hz["MD"].values.astype(float)
-    gr = pd.Series(hz["GR"].values).interpolate(limit_direction="both").fillna(90.0).values
+    Z = hz["Z"].values.astype(float); MD = hz["MD"].values.astype(float)
+    gr = pd.Series(hz["GR"].values).interpolate(limit_direction="both")\
+           .fillna(90.0).values
     ti = hz["TVT_input"].values.astype(float)
     known = np.isfinite(ti)
-    kn = np.where(known)[0]
-    ev = np.where(~known)[0]
+    kn = np.where(known)[0]; ev = np.where(~known)[0]
     if len(ev) == 0:
         return ti.copy()
     tvt = ti.copy()
-    tvt[~known] = ti[kn[-1]]  # placeholder; engine reads tvt only on kn
+    tvt[~known] = ti[kn[-1]]          # placeholder; engine reads tvt only on kn
     comp = []
-    for _name, params in MODEL["configs"].items():
-        runs = [run_pf(twt, twg, tvt, Z, MD, gr, kn, ev, seed=s, **params) for s in MODEL["seeds"]]
+    for name, params in MODEL["configs"].items():
+        runs = [run_pf(twt, twg, tvt, Z, MD, gr, kn, ev, seed=s, **params)
+                for s in MODEL["seeds"]]
         comp.append(np.mean(runs, axis=0))
     X = np.column_stack(comp)
     if MODEL["combiner"] == "uniform":
@@ -134,7 +130,7 @@ def predict_well(hz, tw):
         t = np.arange(len(p), dtype=float)
         p = p + (ti[kn[-1]] - p[0]) * np.exp(-t / pp["anchor_tau"])
     if pp.get("med_win", 0) > 1:
-        p = pd.Series(p).rolling(int(pp["med_win"]), center=True, min_periods=1).median().values
-    out = ti.copy()
-    out[ev] = p
+        p = pd.Series(p).rolling(int(pp["med_win"]), center=True,
+                                 min_periods=1).median().values
+    out = ti.copy(); out[ev] = p
     return out
